@@ -35,3 +35,10 @@ class UserMessageDTO {
     private String name;
     private String surname;
 }
+
+@Getter
+@Setter
+class UserMessageDTO {
+    private String name;
+    private String surname;
+}
