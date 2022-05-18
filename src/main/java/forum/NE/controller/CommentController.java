@@ -1,7 +1,33 @@
 package forum.NE.controller;
 
+import forum.NE.model.Comment;
+import forum.NE.model.Post;
+import forum.NE.service.CommentService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CommentController {
+
+    private final CommentService commentService;
+
+    public CommentController(CommentService commentService) {
+        this.commentService = commentService;
+    }
+
+    @PostMapping("")
+    public ResponseEntity<?> save(@RequestBody Comment comment) {
+        commentService.save(comment);
+        return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping()
+    public ResponseEntity<?> delete(@RequestBody Comment comment) {
+        commentService.delete(comment);
+        return new ResponseEntity<>(HttpStatus.GONE);
+    }
 }

@@ -25,7 +25,7 @@ public class Comment implements Serializable {
     @Column(unique = false, nullable = false, name = "date")
     private Timestamp date;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "IDMessage")
     private Post post;
 
