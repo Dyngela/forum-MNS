@@ -5,10 +5,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Comment")
+@Table(name = "Comments")
 @Getter
 @Setter
 public class Comment implements Serializable {
@@ -22,13 +23,14 @@ public class Comment implements Serializable {
     private String content;
 
     @Column(unique = false, nullable = false, name = "date")
-    private LocalDate date;
-
-    @Column(unique = false, nullable = false, name = "userId")
-    private Long UserId;
+    private Timestamp date;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "IDMessage")
-    private Message message;
+    private Post post;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "IDUser")
+    private Users user;
 
 }
