@@ -49,8 +49,9 @@ public class MessageService {
         }
     }
 
-    public void delete(Post post) {
+    public void delete(Long idPost) {
         try {
+            Post post = messageRepository.findById(idPost).orElseThrow(() -> new ExceptionHandler("Post not found"));
             messageRepository.delete(post);
         } catch (Exception e) {
             throw new ExceptionHandler(e.getMessage());
