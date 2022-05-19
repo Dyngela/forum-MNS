@@ -1,6 +1,7 @@
 package forum.NE.service;
 
 import forum.NE.DTO.PostDTO;
+import forum.NE.exceptions.ExceptionHandler;
 import forum.NE.model.Post;
 import forum.NE.repository.PostRepository;
 import org.apache.logging.log4j.message.Message;
@@ -31,7 +32,19 @@ public class MessageService {
     }
 
     public void save(Post post) {
-        messageRepository.save(post);
+        try {
+            messageRepository.save(post);
+        } catch (Exception e) {
+            throw new ExceptionHandler(e.getMessage());
+        }
+    }
+
+    public void delete(Post post) {
+        try {
+            messageRepository.delete(post);
+        } catch (Exception e) {
+            throw new ExceptionHandler(e.getMessage());
+        }
     }
 
 }
