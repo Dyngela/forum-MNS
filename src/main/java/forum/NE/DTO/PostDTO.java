@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 public class PostDTO {
     private Long idMessage;
+
     private String content;
     private Timestamp date;
     private List<CommentMessageDTO> comments;
@@ -23,6 +24,8 @@ class CommentMessageDTO {
     private String content;
     private Timestamp date;
     private Long UserId;
+    private Long idUser;
+    private Long idMessage;
 }
 
 @Getter
