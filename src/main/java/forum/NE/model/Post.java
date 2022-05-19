@@ -7,17 +7,19 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.List;
+
 
 @Entity
-@Table(name = "Comments")
+@Table(name = "Post")
 @Getter
 @Setter
-public class Comment implements Serializable {
+public class Post implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = false, nullable = false, name = "IDComment")
-    private Long idComment;
+    @Column(unique = false, nullable = false, name = "IDPost")
+    private Long idMessage;
 
     @Column(length = 255, unique = false, nullable = false, name = "content")
     private String content;
@@ -25,11 +27,10 @@ public class Comment implements Serializable {
     @Column(unique = false, nullable = false, name = "date")
     private Timestamp date;
 
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JoinColumn(name = "IDMessage")
-    private Post post;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Comment> comments;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "IDUser")
     private Users user;
 
