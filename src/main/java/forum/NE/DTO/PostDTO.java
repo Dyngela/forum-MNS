@@ -28,6 +28,7 @@ class CommentMessageDTO {
 @Getter
 @Setter
 class UserMessageDTO {
+    private Long idUser;
     private String name;
     private String surname;
 }

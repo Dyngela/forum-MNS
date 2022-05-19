@@ -1,5 +1,6 @@
 package forum.NE.controller;
 
+import forum.NE.DTO.NewMessageDTO;
 import forum.NE.DTO.PostDTO;
 import forum.NE.model.Post;
 import forum.NE.service.MessageService;
@@ -27,7 +28,7 @@ public class MessageController {
 
 
     @PostMapping("")
-    public ResponseEntity<?> save(@RequestBody Post post) {
+    public ResponseEntity<?> save(@RequestBody NewMessageDTO post) {
         messageService.save(post);
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
