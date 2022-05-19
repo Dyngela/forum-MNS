@@ -35,7 +35,7 @@ public class MessageService {
     public List<PostDTO> findAll(int pageStart, int numberOfResult) {
         Page<Post> posts = messageRepository.findAll(PageRequest.of(pageStart, numberOfResult));
         List<PostDTO> postDTO = modelMapper.map(posts.getContent(), new TypeToken<List<PostDTO>>(){}.getType());
-        postDTO.sort(Comparator.comparing(PostDTO::getDate));
+        postDTO.sort(Comparator.comparing(PostDTO::getDate).reversed());
         return postDTO;
     }
 

@@ -13,4 +13,12 @@ public class NewCommentDTO {
     private Long idUser;
     private String content;
     private Timestamp date;
+
+    public NewCommentDTO(Long idComment, Long idMessage, Long idUser, String content, Timestamp date) {
+        this.idComment = idComment;
+        this.idMessage = idMessage;
+        this.idUser = idUser;
+        this.content = content;
+        this.date = date;
+    }
 }
