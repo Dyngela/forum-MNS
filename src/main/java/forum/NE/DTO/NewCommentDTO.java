@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 public class NewCommentDTO {
+    private Long idComment;
     private Long idMessage;
     private Long idUser;
     private String content;

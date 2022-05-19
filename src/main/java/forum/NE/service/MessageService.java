@@ -14,6 +14,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -32,7 +34,9 @@ public class MessageService {
 
     public List<PostDTO> findAll(int pageStart, int numberOfResult) {
         Page<Post> posts = messageRepository.findAll(PageRequest.of(pageStart, numberOfResult));
-        return modelMapper.map(posts.getContent(), new TypeToken<List<PostDTO>>(){}.getType());
+        List<PostDTO> postDTO = modelMapper.map(posts.getContent(), new TypeToken<List<PostDTO>>(){}.getType());
+        postDTO.sort(Comparator.comparing(PostDTO::getDate));
+        return postDTO;
     }
 
     public void save(NewMessageDTO post) {

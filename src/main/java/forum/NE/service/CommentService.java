@@ -30,6 +30,7 @@ public class CommentService {
             Comment comment1 = new Comment();
             comment1.setDate(comment.getDate());
             comment1.setContent(comment.getContent());
+            comment1.setIdComment(comment.getIdComment());
             comment1.setUser(user);
             comment1.setPost(post);
             commentRepository.save(comment1);
