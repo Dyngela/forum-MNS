@@ -1,6 +1,8 @@
 package forum.NE.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -14,6 +16,7 @@ import java.util.List;
 @Table(name = "Post")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Post implements Serializable {
 
     @Id
@@ -34,4 +37,10 @@ public class Post implements Serializable {
     @JoinColumn(name = "IDUser")
     private Users user;
 
+    public Post(Long idMessage, String content, Timestamp date, Users user) {
+        this.idMessage = idMessage;
+        this.content = content;
+        this.date = date;
+        this.user = user;
+    }
 }
