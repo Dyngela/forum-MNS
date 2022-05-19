@@ -32,3 +32,4 @@ class UserMessageDTO {
     private String name;
     private String surname;
 }
+
