@@ -1,5 +1,6 @@
 package forum.NE.controller;
 
+import forum.NE.DTO.NewCommentDTO;
 import forum.NE.model.Comment;
 import forum.NE.model.Post;
 import forum.NE.service.CommentService;
@@ -20,7 +21,7 @@ public class CommentController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> save(@RequestBody Comment comment) {
+    public ResponseEntity<?> save(@RequestBody NewCommentDTO comment) {
         commentService.save(comment);
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }

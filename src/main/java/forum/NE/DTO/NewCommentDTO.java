@@ -4,14 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @Getter
 @Setter
-public class NewMessageDTO {
+public class NewCommentDTO {
     private Long idMessage;
     private Long idUser;
     private String content;
     private Timestamp date;
 }
-
