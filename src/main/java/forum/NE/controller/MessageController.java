@@ -33,10 +33,10 @@ public class MessageController {
         return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping()
-    public ResponseEntity<?> delete(@RequestBody Post post) {
-        messageService.delete(post);
-        return new ResponseEntity<>(HttpStatus.GONE);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable(value = "id") Long idPost) {
+        messageService.delete(idPost);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
